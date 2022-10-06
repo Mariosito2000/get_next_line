@@ -6,7 +6,7 @@
 /*   By: marias-e <marias-e@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 13:40:55 by marias-e          #+#    #+#             */
-/*   Updated: 2022/10/06 11:42:32 by marias-e         ###   ########.fr       */
+/*   Updated: 2022/10/06 16:32:04 by marias-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,15 @@ static char	*ft_fill_stash(char *stash, int fd)
 		count = read(fd, buffer, BUFFER_SIZE);
 		stash = ft_aux_stash(stash, buffer, count);
 		if (!stash)
+		{
+			free(buffer);
 			return (0);
-		if (ft_strchr(buffer, '\n') != -1)
-			return (stash);
+		}
+		if (ft_strchr(stash, '\n') != -1)
+			break ;
 	}
+	if (buffer)
+		free(buffer);
 	return (stash);
 }
 
@@ -64,14 +69,12 @@ static char	*ft_aux_stash(char *stash, char *buffer, int count)
 
 	if (count == -1 || (count == 0 && !stash))
 	{
-		free(buffer);
+		if (stash)
+			free(stash);
 		return (0);
 	}
 	if (count == 0 && stash)
-	{
-		free(buffer);
 		return (stash);
-	}
 	buffer[count] = 0;
 	if (!stash)
 		stash = ft_strdup("");
@@ -98,7 +101,8 @@ static char	*ft_fix_stash(char *stash, size_t len)
 {
 	char	*temp;
 
-	if (ft_strchr(stash, '\n') == -1 || (unsigned int)ft_strchr(stash, '\n') == ft_strlen(stash) - 1)
+	if (ft_strchr(stash, '\n') == -1
+		|| (unsigned int)ft_strchr(stash, '\n') == ft_strlen(stash) - 1)
 	{
 		free(stash);
 		stash = 0;
@@ -107,19 +111,7 @@ static char	*ft_fix_stash(char *stash, size_t len)
 	{
 		temp = stash;
 		stash = ft_substr(stash, len, ft_strlen(stash));
+		free(temp);
 	}
 	return (stash);
-}
-
-int main(void)
-{
-    int fd;
-
-    fd = open("text.txt", O_RDONLY);
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
 }
