@@ -6,7 +6,7 @@
 /*   By: marias-e <marias-e@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 10:21:22 by marias-e          #+#    #+#             */
-/*   Updated: 2022/10/10 10:54:23 by marias-e         ###   ########.fr       */
+/*   Updated: 2022/10/10 16:08:43 by marias-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,16 +115,3 @@ static char	*ft_fix_stash(char *stash, size_t len)
 	}
 	return (stash);
 }
-/*
-int main(void)
-{
-	int fd;
-	int fd2;
-
-	fd = open("text.txt", O_RDONLY);
-	fd2 = open("test2.txt", O_RDONLY);
-	printf("fd = %d -- %s", fd2,  get_next_line(fd2));
-	printf("fd = %d -- %s", fd,  get_next_line(fd));
-	printf("fd = %d -- %s", fd,  get_next_line(fd));
-	printf("fd = %d -- %s", fd2,  get_next_line(fd2));
-}*/
