@@ -6,7 +6,7 @@
 /*   By: marias-e <marias-e@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 10:19:46 by marias-e          #+#    #+#             */
-/*   Updated: 2022/10/07 10:20:49 by marias-e         ###   ########.fr       */
+/*   Updated: 2022/10/10 10:55:41 by marias-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,4 +110,3 @@ int	ft_strchr(const char *s, int c)
 		return (count);
 	return (-1);
 }
-

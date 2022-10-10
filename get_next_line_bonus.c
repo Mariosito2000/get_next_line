@@ -6,7 +6,7 @@
 /*   By: marias-e <marias-e@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 10:21:22 by marias-e          #+#    #+#             */
-/*   Updated: 2022/10/07 11:49:42 by marias-e         ###   ########.fr       */
+/*   Updated: 2022/10/10 10:54:23 by marias-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,8 @@ static char	*ft_fix_stash(char *stash, size_t len);
 char	*get_next_line(int fd)
 {
 	char			*line;
-	static char		**stash;
+	static char		*stash[1024];
 
-	if (!stash[fd])
-		stash = malloc(256 * sizeof(char *));
 	if (fd < 0)
 		return (0);
 	stash[fd] = ft_fill_stash(stash[fd], fd);
