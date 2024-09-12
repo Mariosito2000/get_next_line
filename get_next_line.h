@@ -21,6 +21,8 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 
+# define BUFFER_SIZE 42
+
 char		*get_next_line(int fd);
 size_t		ft_strlen(const char *s);
 char		*ft_strdup(const char *str);
